@@ -1,0 +1,3 @@
+let main = void() {
+	print("hello world!");
+};

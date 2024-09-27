@@ -1,0 +1,31 @@
+module fcc::lexer;
+
+let StringReader = struct {
+	char[]* buffer;
+	int position;
+};
+
+let TokenKind = enum {
+	let identifier = next;
+	let semicolon = next;
+	let source_end = next;
+};
+
+let Token = struct {
+	let TokenKind kind;
+	let int start;
+	let int end;
+};
+
+let read_token = Token(let StringReader reader) {
+	let char c = reader.current;
+	if c == '\0' {
+		return Token {
+			kind = TokenKind::source_end;
+		};
+	};
+};
+
+export  {
+	read_token;
+};
